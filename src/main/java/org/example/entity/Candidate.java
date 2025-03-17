@@ -14,14 +14,14 @@ public class Candidate {
     private String email;
     private String password;
 
-    // Pour simplifier, on utilise une chaîne pour représenter le profil
-    private String profile;
+    @ManyToOne
+    @JoinColumn(name = "profile_id") // Correction : lien avec la table Profile
+    private Profile profile;
 
     // Constructeurs
-    public Candidate() {
-    }
+    public Candidate() {}
 
-    public Candidate(String name, String email, String password, String profile) {
+    public Candidate(String name, String email, String password, Profile profile) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -29,39 +29,17 @@ public class Candidate {
     }
 
     // Getters et Setters
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
+    public Profile getProfile() { return profile; }
+    public void setProfile(Profile profile) { this.profile = profile; }
 }
